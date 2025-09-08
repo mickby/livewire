@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/search', Search::class)->name('search');
+//Route::get('/search', Search::class)->name('search');
 
 Route::get('/articles/{article}', ShowArticle::class)->name('show');
 
