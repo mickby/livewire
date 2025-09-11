@@ -13,9 +13,9 @@
             <p>No results found.</p>
         @endif
 
-        @foreach($results as $result)
-            <div class="pt-2 ">
-                <a href="/articles/{{$result->id}}">{{$result->title}}</a>
+        @foreach($results as $result )
+            <div class="pt-2 " wire:key="{{$result->id}}">
+                <a wire:navigate.hover href="/articles/{{$result->id}}">{{$result->title}}</a>
             </div>
         @endforeach
     </div>
