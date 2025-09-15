@@ -3,44 +3,45 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Session;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-
 use Livewire\WithPagination;
+
 #[Title('Manage Articles')]
 class ArticleList extends AdminComponent
 {
-    use WithPagination;
+    use withPagination;
 
+    #[Session]
     public $showOnlyPublished = false;
-    public function render()
-    {
 
+    #[Computed/*(persist: true)*/]
+    public function articles() {
         $query = Article::query();
 
-        if($this->showOnlyPublished){
-            $query->where('published',1);
+        if ($this->showOnlyPublished) {
+            $query->where('published', 1);
         }
 
-        return view('livewire.article-list',[
-            'articles' => $query->paginate(10)
-        ]);
+        return $query->paginate(10, pageName: 'articles-page');
     }
 
-    public function showAll()
-    {
-        $this->showOnlyPublished = false;
-        $this->resetPage();
-    }
+    public function delete(Article $article) {
+        if ($this->articles->count() < 10) {
+            throw new \Exception("Nope");
+        }
 
-    public function showPublished()
-    {
-        $this->showOnlyPublished = true;
-        $this->resetPage();
-    }
-
-    public function delete(Article $article)
-    {
         $article->delete();
+        unset($this->articles);
+        cache()->forget('published-count');
     }
+
+    public function togglePublished($showOnlyPublished) {
+        $this->showOnlyPublished = $showOnlyPublished;
+        $this->resetPage(pageName: 'articles-page');
+    }
+
+
 }
