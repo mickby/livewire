@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Dashboard')]
+#[Title('Admin Dashboard')]
 class Dashboard extends AdminComponent
 {
     public function render()

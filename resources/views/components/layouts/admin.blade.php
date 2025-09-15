@@ -29,6 +29,7 @@
                             </li>
                         </ul>
                     </div>
+                    <livewire:search placeholder="type something to search">
                 </div>
             </nav>
 

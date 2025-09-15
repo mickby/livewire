@@ -1,3 +1,3 @@
 <div>
-    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    {{-- Because she competes with no one, no one can compete with her. --}}
 </div>

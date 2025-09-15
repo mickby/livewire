@@ -7,13 +7,8 @@
                 wire:model.live.debounce="searchText"
                 placeholder="{{$placeholder}}"
             >
-
-
         </div>
-
-        <livewire:search-results :results="$results" :show="!empty($searchText)">
-
     </form>
-
+    <livewire:search-results :results="$results" :show="!empty($searchText)">
 
 </div>

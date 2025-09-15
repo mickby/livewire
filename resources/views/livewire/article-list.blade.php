@@ -7,10 +7,24 @@
             >
             Create Article
         </a>
-        <livewire:published-count>
+
+    </div>
+
+    <div>
+        <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm"
+        wire:click="showAll()">
+                Show All
+        </button>
+        <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm"
+                wire:click="showPublished()">
+            Show Published (<livewire:published-count placeholder-text="loading"/>)
+        </button>
     </div>
 
 
+    <div class="mb-3">
+        {{$articles->links()}}
+    </div>
 
     <table class="w-full">
         <thead class="text-xs uppercase bg-gray-700 text-gray-400">
@@ -42,4 +56,6 @@
         @endforeach
         </tbody>
     </table>
+
+
 </div>
